@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ServiceCard } from "@/components/ServiceCard";
 import { BottomNav } from "@/components/BottomNav";
-import campusLogo from "@/assets/campus-logo.png";
+import msuIitLogo from "@/assets/msu-iit-logo.png";
 
 const Home = () => {
   const services = [
@@ -45,7 +45,7 @@ const Home = () => {
       <main className="max-w-md mx-auto px-4 py-6">
         {/* Logo Section */}
         <div className="flex justify-center mb-8">
-          <img src={campusLogo} alt="Campus Logo" className="h-24 w-auto" />
+          <img src={msuIitLogo} alt="MSU IIT Logo" className="h-24 w-auto" />
         </div>
 
         {/* Quick Actions */}
