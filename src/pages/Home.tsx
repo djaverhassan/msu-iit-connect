@@ -21,8 +21,8 @@ const Home = () => {
         <div className="max-w-md mx-auto">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-2xl font-bold mb-1">MSU-IIT Campus</h1>
-              <p className="text-primary-foreground/80 text-sm">Student Engagement Platform</p>
+              <h1 className="text-2xl font-bold mb-1">MSU-IIT CampusLink</h1>
+              <p className="text-primary-foreground/80 text-sm">Mobile Application for Student Service & Engagement</p>
             </div>
             <div className="relative">
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
