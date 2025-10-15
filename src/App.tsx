@@ -9,6 +9,9 @@ import News from "./pages/News";
 import Emergency from "./pages/Emergency";
 import Account from "./pages/Account";
 import Map from "./pages/Map";
+import EServices from "./pages/EServices";
+import CoreValues from "./pages/CoreValues";
+import ReportIssue from "./pages/ReportIssue";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +25,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/e-services" element={<EServices />} />
+          <Route path="/core-values" element={<CoreValues />} />
+          <Route path="/report-issue" element={<ReportIssue />} />
           <Route path="/news" element={<News />} />
           <Route path="/map" element={<Map />} />
           <Route path="/emergency" element={<Emergency />} />

@@ -8,9 +8,9 @@ import campusLogo from "@/assets/campus-logo.png";
 
 const Home = () => {
   const services = [
-    { icon: Globe, label: "e-Services", href: "/services/e-services" },
+    { icon: Globe, label: "e-Services", href: "/e-services" },
     { icon: AlertCircle, label: "Emergency", href: "/emergency" },
-    { icon: GraduationCap, label: "Student Guide", href: "/services/student-guide" },
+    { icon: GraduationCap, label: "Core Values", href: "/core-values" },
     { icon: FileText, label: "Campus Updates", href: "/news" },
   ];
 
@@ -99,11 +99,13 @@ const Home = () => {
             <Button
               variant="secondary"
               className="flex-1 bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground border-0"
+              onClick={() => window.location.href = "/report-issue"}
             >
               View Reports
             </Button>
             <Button
               className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground border-0"
+              onClick={() => window.location.href = "/report-issue"}
             >
               <Plus className="h-4 w-4 mr-2" />
               Report Issue

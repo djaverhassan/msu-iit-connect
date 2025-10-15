@@ -48,7 +48,7 @@ const Account = () => {
               <div className="flex-1">
                 <h2 className="text-xl font-semibold text-primary-foreground mb-0.5">Juan Dela Cruz</h2>
                 <p className="text-primary-foreground/80 text-sm mb-1">Student ID: 2024-12345</p>
-                <p className="text-primary-foreground/70 text-xs">College of Engineering</p>
+                <p className="text-primary-foreground/70 text-xs">College of Computer Studies</p>
               </div>
             </div>
           </div>
