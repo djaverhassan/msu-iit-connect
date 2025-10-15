@@ -46,7 +46,7 @@ const Home = () => {
       <main className="max-w-md mx-auto px-4 py-6">
         {/* Logo Section */}
         <div className="flex justify-center mb-8">
-          <img src={campusLogo} alt="Campus Logo" className="h-24 w-auto" />
+          <img src={campusLogo} alt="Campus Logo" className="h-40 w-auto" />
         </div>
 
         {/* Quick Actions */}
