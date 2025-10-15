@@ -1,9 +1,10 @@
-import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus } from "lucide-react";
+import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ServiceCard } from "@/components/ServiceCard";
 import { BottomNav } from "@/components/BottomNav";
-import msuIitLogo from "@/assets/msu-iit-logo.png";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import campusLogo from "@/assets/campus-logo.png";
 
 const Home = () => {
   const services = [
@@ -45,7 +46,7 @@ const Home = () => {
       <main className="max-w-md mx-auto px-4 py-6">
         {/* Logo Section */}
         <div className="flex justify-center mb-8">
-          <img src={msuIitLogo} alt="MSU IIT Logo" className="h-24 w-auto" />
+          <img src={campusLogo} alt="Campus Logo" className="h-24 w-auto" />
         </div>
 
         {/* Quick Actions */}
@@ -59,16 +60,33 @@ const Home = () => {
         </section>
 
         {/* SDG Focus Banner */}
-        <section className="mb-6 p-4 rounded-2xl bg-secondary/10 border border-secondary/20">
-          <div className="flex items-start gap-3">
-            <div className="p-2 rounded-lg bg-secondary/20">
-              <GraduationCap className="h-5 w-5 text-secondary" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-foreground mb-1">Quality Education & Justice</h3>
-              <p className="text-sm text-muted-foreground">Supporting SDG 4 & 16 through transparent campus governance and accessible education services.</p>
-            </div>
-          </div>
+        <section className="mb-6">
+          <Accordion type="single" collapsible className="bg-secondary/10 border border-secondary/20 rounded-2xl overflow-hidden">
+            <AccordionItem value="sdg" className="border-0">
+              <AccordionTrigger className="px-4 py-4 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-secondary/20">
+                    <GraduationCap className="h-5 w-5 text-secondary" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-foreground">This app promotes advocacy for SDG 4 and SDG 16</h3>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-4 pt-0">
+                <div className="pl-11 space-y-3">
+                  <div>
+                    <h4 className="font-medium text-foreground mb-1">SDG 4: Quality Education</h4>
+                    <p className="text-sm text-muted-foreground">Ensuring inclusive and equitable quality education through accessible campus services and resources.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-foreground mb-1">SDG 16: Peace, Justice and Strong Institutions</h4>
+                    <p className="text-sm text-muted-foreground">Promoting transparent governance, accountability, and effective platforms for student voices to be heard.</p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </section>
 
         {/* Report Issue CTA */}
