@@ -1,4 +1,4 @@
-import { Home, Grid3x3, Newspaper, AlertTriangle, User } from "lucide-react";
+import { Home, Grid3x3, Newspaper, MapPin, User } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -6,7 +6,7 @@ const navItems = [
   { icon: Home, label: "Home", path: "/" },
   { icon: Grid3x3, label: "Services", path: "/services" },
   { icon: Newspaper, label: "News", path: "/news" },
-  { icon: AlertTriangle, label: "Emergency", path: "/emergency" },
+  { icon: MapPin, label: "Map", path: "/map" },
   { icon: User, label: "Account", path: "/account" },
 ];
 
