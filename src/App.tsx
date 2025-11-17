@@ -13,6 +13,11 @@ import EServices from "./pages/EServices";
 import CoreValues from "./pages/CoreValues";
 import ReportIssue from "./pages/ReportIssue";
 import NotFound from "./pages/NotFound";
+import AdminDashboard from "./pages/admin/Dashboard";
+import AdminIssues from "./pages/admin/Issues";
+import AdminUsers from "./pages/admin/Users";
+import AdminServices from "./pages/admin/Services";
+import AdminAnalytics from "./pages/admin/Analytics";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +37,11 @@ const App = () => (
           <Route path="/map" element={<Map />} />
           <Route path="/emergency" element={<Emergency />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/issues" element={<AdminIssues />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/services" element={<AdminServices />} />
+          <Route path="/admin/analytics" element={<AdminAnalytics />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
