@@ -13,6 +13,15 @@ import EServices from "./pages/EServices";
 import CoreValues from "./pages/CoreValues";
 import ReportIssue from "./pages/ReportIssue";
 import NotFound from "./pages/NotFound";
+import Publications from "./pages/Publications";
+import Silahis from "./pages/publications/Silahis";
+import Sidlak from "./pages/publications/Sidlak";
+import Cassayuran from "./pages/publications/Cassayuran";
+import Motherboard from "./pages/publications/Motherboard";
+import Sindaw from "./pages/publications/Sindaw";
+import AdInfinitum from "./pages/publications/AdInfinitum";
+import Caduceus from "./pages/publications/Caduceus";
+import Thuum from "./pages/publications/Thuum";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminIssues from "./pages/admin/Issues";
 import AdminUsers from "./pages/admin/Users";
@@ -34,6 +43,15 @@ const App = () => (
           <Route path="/core-values" element={<CoreValues />} />
           <Route path="/report-issue" element={<ReportIssue />} />
           <Route path="/news" element={<News />} />
+          <Route path="/publications" element={<Publications />} />
+          <Route path="/publications/silahis" element={<Silahis />} />
+          <Route path="/publications/sidlak" element={<Sidlak />} />
+          <Route path="/publications/cassayuran" element={<Cassayuran />} />
+          <Route path="/publications/motherboard" element={<Motherboard />} />
+          <Route path="/publications/sindaw" element={<Sindaw />} />
+          <Route path="/publications/adinfinitum" element={<AdInfinitum />} />
+          <Route path="/publications/caduceus" element={<Caduceus />} />
+          <Route path="/publications/thuum" element={<Thuum />} />
           <Route path="/map" element={<Map />} />
           <Route path="/emergency" element={<Emergency />} />
           <Route path="/account" element={<Account />} />
