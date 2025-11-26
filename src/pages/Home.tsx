@@ -5,62 +5,18 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { BottomNav } from "@/components/BottomNav";
 import { FeedPost } from "@/components/FeedPost";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { usePosts } from "@/hooks/usePosts";
+import { format } from "date-fns";
 import campusLogo from "@/assets/campus-logo.png";
 
 const Home = () => {
+  const { data: posts, isLoading } = usePosts();
+  
   const services = [
     { icon: Globe, label: "e-Services", href: "/e-services" },
     { icon: AlertCircle, label: "Emergency", href: "/emergency" },
     { icon: GraduationCap, label: "Core Values", href: "/core-values" },
     { icon: FileText, label: "Campus Updates", href: "/news" },
-  ];
-
-  const feedPosts = [
-    {
-      id: 1,
-      author: "SILAHIS",
-      authorType: "publication" as const,
-      timestamp: "2 hours ago",
-      content: "MSU-IIT celebrates its 50th founding anniversary with a week-long celebration featuring cultural performances, academic symposiums, and alumni gatherings. Join us in commemorating five decades of excellence in education! 🎉",
-      likes: 234,
-      comments: 45,
-    },
-    {
-      id: 2,
-      author: "Dean Maria Santos",
-      authorType: "admin" as const,
-      timestamp: "4 hours ago",
-      content: "Reminder: All students are required to attend the General Assembly tomorrow at 2:00 PM in the Main Auditorium. Please bring your student IDs.",
-      likes: 189,
-      comments: 23,
-    },
-    {
-      id: 3,
-      author: "THE MOTHERBOARD",
-      authorType: "publication" as const,
-      timestamp: "6 hours ago",
-      content: "College of Computer Studies announces new AI and Machine Learning laboratory opening next semester. State-of-the-art facilities with high-performance computing resources will be available to all CCS students.",
-      likes: 312,
-      comments: 67,
-    },
-    {
-      id: 4,
-      author: "Student Affairs Office",
-      authorType: "admin" as const,
-      timestamp: "8 hours ago",
-      content: "Scholarship applications for the next academic year are now open! Visit the Student Affairs Office or check our e-Services portal for requirements and deadlines. Don't miss this opportunity!",
-      likes: 156,
-      comments: 34,
-    },
-    {
-      id: 5,
-      author: "CASSAYURAN",
-      authorType: "publication" as const,
-      timestamp: "1 day ago",
-      content: "The College of Arts and Social Sciences invites everyone to the Cultural Night this Friday at 6:00 PM. Experience diverse performances from different cultural groups across campus. Free admission for all!",
-      likes: 278,
-      comments: 52,
-    },
   ];
 
   return (
@@ -169,9 +125,25 @@ const Home = () => {
             <Button variant="ghost" size="sm" className="text-primary">View All</Button>
           </div>
           <div className="space-y-4">
-            {feedPosts.map((post) => (
-              <FeedPost key={post.id} {...post} />
-            ))}
+            {isLoading ? (
+              <p className="text-center text-muted-foreground">Loading posts...</p>
+            ) : posts && posts.length > 0 ? (
+              posts.map((post) => (
+                <FeedPost
+                  key={post.id}
+                  author={post.author}
+                  authorType={post.author_type}
+                  avatar={undefined}
+                  timestamp={format(new Date(post.created_at), "MMM d, yyyy")}
+                  content={post.content}
+                  image={post.image_url || undefined}
+                  likes={post.likes}
+                  comments={post.comments_count}
+                />
+              ))
+            ) : (
+              <p className="text-center text-muted-foreground">No posts yet. Check back later!</p>
+            )}
           </div>
         </section>
       </main>
