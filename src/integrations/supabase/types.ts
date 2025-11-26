@@ -14,7 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      posts: {
+        Row: {
+          author: string
+          author_type: Database["public"]["Enums"]["author_type"]
+          category: string | null
+          comments_count: number
+          content: string
+          created_at: string
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          likes: number
+          publication_id: Database["public"]["Enums"]["publication_type"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author: string
+          author_type?: Database["public"]["Enums"]["author_type"]
+          category?: string | null
+          comments_count?: number
+          content: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          likes?: number
+          publication_id: Database["public"]["Enums"]["publication_type"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          author_type?: Database["public"]["Enums"]["author_type"]
+          category?: string | null
+          comments_count?: number
+          content?: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          likes?: number
+          publication_id?: Database["public"]["Enums"]["publication_type"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +70,16 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      author_type: "publication" | "admin"
+      publication_type:
+        | "silahis"
+        | "sidlak"
+        | "cassayuran"
+        | "motherboard"
+        | "sindaw"
+        | "adinfinitum"
+        | "caduceus"
+        | "thuum"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +206,18 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      author_type: ["publication", "admin"],
+      publication_type: [
+        "silahis",
+        "sidlak",
+        "cassayuran",
+        "motherboard",
+        "sindaw",
+        "adinfinitum",
+        "caduceus",
+        "thuum",
+      ],
+    },
   },
 } as const
