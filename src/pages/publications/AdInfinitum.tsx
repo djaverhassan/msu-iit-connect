@@ -1,7 +1,8 @@
 import { BottomNav } from "@/components/BottomNav";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
@@ -17,9 +18,21 @@ const AdInfinitum = () => {
           Back to Publications
         </Link>
 
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-foreground">AD INFINITUM</h1>
-          <p className="text-muted-foreground">College of Science and Mathematics</p>
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold text-foreground">AD INFINITUM</h1>
+            <p className="text-muted-foreground">College of Science and Mathematics</p>
+          </div>
+          <a 
+            href="https://www.facebook.com/CSMAdInfinitum" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <Button variant="outline" className="gap-2">
+              <Facebook className="h-4 w-4" />
+              Visit our Facebook Page
+            </Button>
+          </a>
         </div>
 
         <div className="space-y-4">
