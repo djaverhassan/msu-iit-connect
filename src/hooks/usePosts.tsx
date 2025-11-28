@@ -23,6 +23,7 @@ export interface Post {
   author_type: AuthorType;
   category: string | null;
   image_url: string | null;
+  facebook_url: string | null;
   likes: number;
   comments_count: number;
   created_at: string;

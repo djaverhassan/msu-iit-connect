@@ -23,6 +23,7 @@ export type Database = {
           content: string
           created_at: string
           excerpt: string | null
+          facebook_url: string | null
           id: string
           image_url: string | null
           likes: number
@@ -38,6 +39,7 @@ export type Database = {
           content: string
           created_at?: string
           excerpt?: string | null
+          facebook_url?: string | null
           id?: string
           image_url?: string | null
           likes?: number
@@ -53,6 +55,7 @@ export type Database = {
           content?: string
           created_at?: string
           excerpt?: string | null
+          facebook_url?: string | null
           id?: string
           image_url?: string | null
           likes?: number

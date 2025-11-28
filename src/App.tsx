@@ -27,6 +27,7 @@ import AdminIssues from "./pages/admin/Issues";
 import AdminUsers from "./pages/admin/Users";
 import AdminServices from "./pages/admin/Services";
 import AdminAnalytics from "./pages/admin/Analytics";
+import AdminPosts from "./pages/admin/Posts";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/emergency" element={<Emergency />} />
           <Route path="/account" element={<Account />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/posts" element={<AdminPosts />} />
           <Route path="/admin/issues" element={<AdminIssues />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/services" element={<AdminServices />} />

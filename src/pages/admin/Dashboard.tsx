@@ -47,6 +47,21 @@ const Dashboard = () => {
           <Card className="hover:shadow-lg transition-shadow">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
+                <FileText className="h-5 w-5" />
+                Posts
+              </CardTitle>
+              <CardDescription>Manage publication posts and announcements</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild className="w-full">
+                <Link to="/admin/posts">Manage Posts</Link>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
                 <AlertCircle className="h-5 w-5" />
                 Reported Issues
               </CardTitle>

@@ -139,6 +139,7 @@ const Home = () => {
                   image={post.image_url || undefined}
                   likes={post.likes}
                   comments={post.comments_count}
+                  facebookUrl={post.facebook_url || undefined}
                 />
               ))
             ) : (

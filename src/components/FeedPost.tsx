@@ -12,9 +12,10 @@ interface FeedPostProps {
   image?: string;
   likes: number;
   comments: number;
+  facebookUrl?: string;
 }
 
-export const FeedPost = ({ author, authorType, avatar, timestamp, content, image, likes, comments }: FeedPostProps) => {
+export const FeedPost = ({ author, authorType, avatar, timestamp, content, image, likes, comments, facebookUrl }: FeedPostProps) => {
   return (
     <Card className="p-4 border border-border">
       {/* Header */}
@@ -38,6 +39,18 @@ export const FeedPost = ({ author, authorType, avatar, timestamp, content, image
 
       {/* Content */}
       <p className="text-sm text-foreground mb-3 whitespace-pre-wrap">{content}</p>
+
+      {/* Facebook Link if exists */}
+      {facebookUrl && (
+        <a 
+          href={facebookUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-sm text-primary hover:underline inline-flex items-center gap-1 mb-3"
+        >
+          View on Facebook →
+        </a>
+      )}
 
       {/* Image if exists */}
       {image && (
