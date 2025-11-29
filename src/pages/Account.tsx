@@ -2,8 +2,42 @@ import { User, Settings, Bell, Shield, HelpCircle, LogOut, ChevronRight } from "
 import { BottomNav } from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useAuth } from "@/contexts/AuthContext";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
+  const { user, signOut, isAdmin } = useAuth();
+  const navigate = useNavigate();
+  const [profile, setProfile] = useState<{ display_name: string | null } | null>(null);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+
+    const fetchProfile = async () => {
+      const { data } = await supabase
+        .from('profiles')
+        .select('display_name')
+        .eq('user_id', user.id)
+        .maybeSingle();
+      
+      setProfile(data);
+    };
+
+    fetchProfile();
+  }, [user, navigate]);
+
+  const getInitials = (name: string | null | undefined) => {
+    if (!name) return 'U';
+    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+  };
+
+  const displayName = profile?.display_name || user?.email?.split('@')[0] || 'User';
+
   const menuItems = [
     {
       icon: Settings,
@@ -42,13 +76,15 @@ const Account = () => {
             <div className="flex items-center gap-4">
               <Avatar className="h-16 w-16 border-2 border-primary-foreground">
                 <AvatarFallback className="bg-primary-foreground text-primary text-xl font-semibold">
-                  JS
+                  {getInitials(displayName)}
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1">
-                <h2 className="text-xl font-semibold text-primary-foreground mb-0.5">Juan Dela Cruz</h2>
-                <p className="text-primary-foreground/80 text-sm mb-1">Student ID: 2024-12345</p>
-                <p className="text-primary-foreground/70 text-xs">College of Computer Studies</p>
+                <h2 className="text-xl font-semibold text-primary-foreground mb-0.5">{displayName}</h2>
+                <p className="text-primary-foreground/80 text-sm mb-1">{user?.email}</p>
+                {isAdmin && (
+                  <p className="text-primary-foreground/70 text-xs font-semibold">Admin Account</p>
+                )}
               </div>
             </div>
           </div>
@@ -87,7 +123,7 @@ const Account = () => {
             <p className="text-xs text-muted-foreground">Version 1.0.0</p>
           </div>
 
-          <Button variant="destructive" className="w-full" size="lg">
+          <Button variant="destructive" className="w-full" size="lg" onClick={signOut}>
             <LogOut className="h-4 w-4 mr-2" />
             Sign Out
           </Button>
