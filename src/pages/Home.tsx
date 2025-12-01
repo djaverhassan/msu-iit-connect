@@ -1,4 +1,4 @@
-import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus, ChevronDown } from "lucide-react";
+import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus, ChevronDown, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -8,9 +8,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
 import campusLogo from "@/assets/campus-logo.png";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Home = () => {
   const { data: posts, isLoading } = usePosts();
+  const { isAdmin } = useAuth();
   
   const services = [
     { icon: Globe, label: "e-Services", href: "/e-services" },
@@ -53,6 +55,20 @@ const Home = () => {
         <div className="flex justify-center mb-8">
           <img src={campusLogo} alt="Campus Logo" className="h-40 w-auto" />
         </div>
+
+        {/* Admin Panel Button */}
+        {isAdmin && (
+          <section className="mb-6">
+            <Button
+              onClick={() => window.location.href = "/admin"}
+              className="w-full bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-accent-foreground h-14 rounded-xl"
+              style={{ boxShadow: "var(--shadow-elevated)" }}
+            >
+              <Shield className="h-5 w-5 mr-2" />
+              Admin Panel
+            </Button>
+          </section>
+        )}
 
         {/* Quick Actions */}
         <section className="mb-8">
