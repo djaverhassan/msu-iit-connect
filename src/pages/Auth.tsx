@@ -147,7 +147,6 @@ export default function Auth() {
                   <Input
                     id="login-email"
                     type="email"
-                    placeholder="your.email@example.com"
                     value={loginForm.email}
                     onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
                     required
@@ -159,7 +158,6 @@ export default function Auth() {
                   <Input
                     id="login-password"
                     type="password"
-                    placeholder="••••••••"
                     value={loginForm.password}
                     onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                     required
@@ -179,7 +177,6 @@ export default function Auth() {
                   <Input
                     id="signup-name"
                     type="text"
-                    placeholder="John Doe"
                     value={signupForm.displayName}
                     onChange={(e) => setSignupForm({ ...signupForm, displayName: e.target.value })}
                     required
@@ -191,7 +188,6 @@ export default function Auth() {
                   <Input
                     id="signup-email"
                     type="email"
-                    placeholder="your.email@example.com"
                     value={signupForm.email}
                     onChange={(e) => setSignupForm({ ...signupForm, email: e.target.value })}
                     required
@@ -203,7 +199,6 @@ export default function Auth() {
                   <Input
                     id="signup-password"
                     type="password"
-                    placeholder="••••••••"
                     value={signupForm.password}
                     onChange={(e) => setSignupForm({ ...signupForm, password: e.target.value })}
                     required
@@ -215,7 +210,6 @@ export default function Auth() {
                   <Input
                     id="signup-confirm"
                     type="password"
-                    placeholder="••••••••"
                     value={signupForm.confirmPassword}
                     onChange={(e) => setSignupForm({ ...signupForm, confirmPassword: e.target.value })}
                     required
