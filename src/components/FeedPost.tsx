@@ -1,7 +1,8 @@
-import { Heart, MessageCircle, Share2, MoreVertical } from "lucide-react";
+import { Heart, MessageCircle, Share2, MoreVertical, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface FeedPostProps {
   author: string;
@@ -13,9 +14,32 @@ interface FeedPostProps {
   likes: number;
   comments: number;
   facebookUrl?: string;
+  publicationId?: string;
 }
 
-export const FeedPost = ({ author, authorType, avatar, timestamp, content, image, likes, comments, facebookUrl }: FeedPostProps) => {
+const publicationLabels: Record<string, string> = {
+  silahis: "Silahis",
+  sidlak: "Sidlak",
+  cassayuran: "Cassayuran",
+  motherboard: "Motherboard",
+  sindaw: "Sindaw",
+  adinfinitum: "Ad Infinitum",
+  caduceus: "Caduceus",
+  thuum: "Thuum",
+};
+
+export const FeedPost = ({ 
+  author, 
+  authorType, 
+  avatar, 
+  timestamp, 
+  content, 
+  image, 
+  likes, 
+  comments, 
+  facebookUrl,
+  publicationId 
+}: FeedPostProps) => {
   return (
     <Card className="p-4 border border-border">
       {/* Header */}
@@ -28,7 +52,14 @@ export const FeedPost = ({ author, authorType, avatar, timestamp, content, image
             </AvatarFallback>
           </Avatar>
           <div>
-            <h4 className="font-semibold text-foreground text-sm">{author}</h4>
+            <div className="flex items-center gap-2">
+              <h4 className="font-semibold text-foreground text-sm">{author}</h4>
+              {publicationId && publicationLabels[publicationId] && (
+                <Badge variant="secondary" className="text-xs">
+                  {publicationLabels[publicationId]}
+                </Badge>
+              )}
+            </div>
             <p className="text-xs text-muted-foreground">{timestamp}</p>
           </div>
         </div>
@@ -38,17 +69,21 @@ export const FeedPost = ({ author, authorType, avatar, timestamp, content, image
       </div>
 
       {/* Content */}
-      <p className="text-sm text-foreground mb-3 whitespace-pre-wrap">{content}</p>
+      <p className="text-sm text-foreground mb-3 whitespace-pre-wrap line-clamp-4">{content}</p>
 
-      {/* Facebook Link if exists */}
+      {/* Facebook Embed Link */}
       {facebookUrl && (
         <a 
           href={facebookUrl} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-sm text-primary hover:underline inline-flex items-center gap-1 mb-3"
+          className="flex items-center gap-2 p-3 mb-3 rounded-lg bg-secondary/30 border border-border hover:bg-secondary/50 transition-colors"
         >
-          View on Facebook →
+          <Facebook className="h-5 w-5 text-[#1877F2]" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-foreground">View on Facebook</p>
+            <p className="text-xs text-muted-foreground truncate">{facebookUrl}</p>
+          </div>
         </a>
       )}
 

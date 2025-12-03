@@ -11,7 +11,7 @@ import campusLogo from "@/assets/campus-logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 
 const Home = () => {
-  const { data: posts, isLoading } = usePosts();
+  const { data: posts, isLoading } = usePosts({ recentDays: 3 });
   const { isAdmin } = useAuth();
   
   const services = [
@@ -156,6 +156,7 @@ const Home = () => {
                   likes={post.likes}
                   comments={post.comments_count}
                   facebookUrl={post.facebook_url || undefined}
+                  publicationId={post.publication_id}
                 />
               ))
             ) : (
