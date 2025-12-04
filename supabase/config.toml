@@ -1,1 +1,4 @@
 project_id = "wszsetuedajaferrmcam"
+
+[functions.send-issue-report]
+verify_jwt = false

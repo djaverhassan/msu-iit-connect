@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      issues: {
+        Row: {
+          category: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          status: string
+          student_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          status?: string
+          student_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          status?: string
+          student_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       posts: {
         Row: {
           author: string

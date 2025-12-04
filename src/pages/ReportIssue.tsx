@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const ReportIssue = () => {
   const [formData, setFormData] = useState({
@@ -29,10 +30,62 @@ const ReportIssue = () => {
     setIsSubmitting(true);
 
     try {
-      // TODO: Replace with your Google Form URL or email endpoint
-      // For Google Forms: Submit to your form's action URL
-      // For Email: Call edge function to send email
-      
+      // Insert issue into database
+      const { error: insertError } = await supabase
+        .from('issues')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          student_id: formData.studentId || null,
+          category: formData.category || null,
+          message: formData.message,
+        });
+
+      if (insertError) {
+        throw insertError;
+      }
+
+      // Get admin emails from profiles joined with user_roles
+      const { data: adminRoles, error: rolesError } = await supabase
+        .from('user_roles')
+        .select('user_id')
+        .eq('role', 'admin');
+
+      if (rolesError) {
+        console.error("Error fetching admin roles:", rolesError);
+      }
+
+      // Get admin emails from auth if we have admin user IDs
+      let adminEmails: string[] = [];
+      if (adminRoles && adminRoles.length > 0) {
+        // For now, we'll use a default admin email since we can't query auth.users directly
+        // In production, you'd store admin emails in profiles table
+        adminEmails = ["admin@msuiit.edu.ph"]; // Placeholder - admins should update this
+      }
+
+      // Send email notification to admins (if adminEmails available)
+      if (adminEmails.length > 0) {
+        try {
+          const { error: emailError } = await supabase.functions.invoke('send-issue-report', {
+            body: {
+              name: formData.name,
+              email: formData.email,
+              studentId: formData.studentId,
+              category: formData.category,
+              message: formData.message,
+              adminEmails,
+            },
+          });
+
+          if (emailError) {
+            console.error("Email notification failed:", emailError);
+            // Don't throw - the issue was still saved to database
+          }
+        } catch (emailErr) {
+          console.error("Email notification error:", emailErr);
+        }
+      }
+
       toast.success("Report submitted successfully! We'll get back to you soon.");
       setFormData({
         name: "",
@@ -41,7 +94,8 @@ const ReportIssue = () => {
         category: "",
         message: "",
       });
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Error submitting report:", error);
       toast.error("Failed to submit report. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -148,7 +202,7 @@ const ReportIssue = () => {
 
         <div className="mt-4 bg-muted/50 rounded-xl p-4">
           <p className="text-sm text-muted-foreground">
-            <strong>Note:</strong> All reports are reviewed by the administration. You will receive a response via email within 3-5 business days.
+            <strong>Note:</strong> All reports are reviewed by the administration. You will receive a response via email as soon as possible.
           </p>
         </div>
       </main>
