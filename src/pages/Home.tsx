@@ -9,10 +9,12 @@ import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
 import campusLogo from "@/assets/campus-logo.png";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { data: posts, isLoading } = usePosts({ recentDays: 3 });
   const { isAdmin } = useAuth();
+  const navigate = useNavigate();
   
   const services = [
     { icon: Globe, label: "e-Services", href: "/e-services" },
@@ -60,7 +62,7 @@ const Home = () => {
         {isAdmin && (
           <section className="mb-6">
             <Button
-              onClick={() => window.location.href = "/admin"}
+              onClick={() => navigate("/admin")}
               className="w-full bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-accent-foreground h-14 rounded-xl"
               style={{ boxShadow: "var(--shadow-elevated)" }}
             >
@@ -120,13 +122,13 @@ const Home = () => {
             <Button
               variant="secondary"
               className="flex-1 bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground border-0"
-              onClick={() => window.location.href = "/report-issue"}
+              onClick={() => navigate("/report-issue")}
             >
               View Reports
             </Button>
             <Button
               className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground border-0"
-              onClick={() => window.location.href = "/report-issue"}
+              onClick={() => navigate("/report-issue")}
             >
               <Plus className="h-4 w-4 mr-2" />
               Report Issue
