@@ -32,6 +32,7 @@ import AdminUsers from "./pages/admin/Users";
 import AdminServices from "./pages/admin/Services";
 import AdminAnalytics from "./pages/admin/Analytics";
 import AdminPosts from "./pages/admin/Posts";
+import AdminSettings from "./pages/admin/Settings";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,7 @@ const App = () => {
           <Route path="/admin/users" element={<ProtectedRoute requireAdmin><AdminUsers /></ProtectedRoute>} />
           <Route path="/admin/services" element={<ProtectedRoute requireAdmin><AdminServices /></ProtectedRoute>} />
           <Route path="/admin/analytics" element={<ProtectedRoute requireAdmin><AdminAnalytics /></ProtectedRoute>} />
+          <Route path="/admin/settings" element={<ProtectedRoute requireAdmin><AdminSettings /></ProtectedRoute>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
