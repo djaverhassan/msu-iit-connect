@@ -4,17 +4,17 @@ import { ServiceCard } from "@/components/ServiceCard";
 
 const Services = () => {
   const eServices = [
-    { icon: Globe, label: "e-Services Portal", href: "/services/portal" },
-    { icon: GraduationCap, label: "Student Guide", href: "/services/student-guide" },
-    { icon: Calendar, label: "Academic Calendar", href: "/services/calendar" },
-    { icon: BookOpen, label: "Library Services", href: "/services/library" },
+    { icon: Globe, label: "e-Services Portal", href: "/e-services" },
+    { icon: GraduationCap, label: "Core Values", href: "/core-values" },
+    { icon: Calendar, label: "Publications", href: "/publications" },
+    { icon: BookOpen, label: "News & Updates", href: "/news" },
   ];
 
   const campusServices = [
-    { icon: MapPin, label: "Campus Map", href: "/services/map" },
-    { icon: Wrench, label: "Facilities", href: "/services/facilities" },
-    { icon: Users, label: "Student Organizations", href: "/services/organizations" },
-    { icon: Phone, label: "Contact Directory", href: "/services/directory" },
+    { icon: MapPin, label: "Campus Map", href: "/map" },
+    { icon: Wrench, label: "Report Issue", href: "/report-issue" },
+    { icon: Users, label: "Publications", href: "/publications" },
+    { icon: Phone, label: "Emergency", href: "/emergency" },
   ];
 
   return (
