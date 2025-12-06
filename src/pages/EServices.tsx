@@ -4,36 +4,43 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 const EServices = () => {
+  const portalUrl = "https://myiitportal.msuiit.edu.ph/";
+  
   const services = [
     {
       icon: FileText,
       label: "Request ID",
       description: "Apply for your student ID card",
       action: "Request Now",
+      url: portalUrl,
     },
     {
       icon: CreditCard,
       label: "Request COR",
       description: "Certificate of Registration request",
       action: "Request Now",
+      url: portalUrl,
     },
     {
       icon: BookOpen,
       label: "Request Transcript",
       description: "Official transcript of records",
       action: "Request Now",
+      url: portalUrl,
     },
     {
       icon: GraduationCap,
       label: "Enrollment Services",
       description: "Online enrollment and registration",
       action: "Access",
+      url: portalUrl,
     },
     {
       icon: Calendar,
       label: "Grade Viewing",
       description: "View your academic grades",
       action: "View Grades",
+      url: portalUrl,
     },
   ];
 
@@ -78,7 +85,11 @@ const EServices = () => {
                   <div className="flex-1">
                     <h3 className="font-semibold text-foreground mb-1">{service.label}</h3>
                     <p className="text-sm text-muted-foreground mb-3">{service.description}</p>
-                    <Button size="sm" className="w-full">
+                    <Button 
+                      size="sm" 
+                      className="w-full"
+                      onClick={() => window.open(service.url, '_blank', 'noopener,noreferrer')}
+                    >
                       {service.action}
                     </Button>
                   </div>
