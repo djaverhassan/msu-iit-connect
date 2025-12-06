@@ -21,7 +21,7 @@ const Dashboard = () => {
               <h1 className="text-2xl font-bold">Admin Dashboard</h1>
             </div>
             <Button variant="outline" asChild>
-              <Link to="/">Back to Main Site</Link>
+              <Link to="/home">Back to Main Site</Link>
             </Button>
           </div>
         </div>
