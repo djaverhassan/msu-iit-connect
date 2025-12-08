@@ -13,6 +13,7 @@ import Emergency from "./pages/Emergency";
 import Account from "./pages/Account";
 import Map from "./pages/Map";
 import EServices from "./pages/EServices";
+import EServiceRequest from "./pages/EServiceRequest";
 import CoreValues from "./pages/CoreValues";
 import ReportIssue from "./pages/ReportIssue";
 import Auth from "./pages/Auth";
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
             <Route path="/e-services" element={<ProtectedRoute><EServices /></ProtectedRoute>} />
+            <Route path="/e-services/request" element={<ProtectedRoute><EServiceRequest /></ProtectedRoute>} />
             <Route path="/core-values" element={<ProtectedRoute><CoreValues /></ProtectedRoute>} />
             <Route path="/report-issue" element={<ProtectedRoute><ReportIssue /></ProtectedRoute>} />
             <Route path="/news" element={<ProtectedRoute><News /></ProtectedRoute>} />

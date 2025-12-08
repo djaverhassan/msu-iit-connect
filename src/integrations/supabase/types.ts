@@ -125,6 +125,48 @@ export type Database = {
         }
         Relationships: []
       }
+      service_requests: {
+        Row: {
+          additional_notes: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          purpose: string | null
+          service_type: string
+          status: string
+          student_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          additional_notes?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          purpose?: string | null
+          service_type: string
+          status?: string
+          student_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          additional_notes?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          purpose?: string | null
+          service_type?: string
+          status?: string
+          student_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
