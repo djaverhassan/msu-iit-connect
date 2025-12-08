@@ -97,6 +97,7 @@ const Account = () => {
           {menuItems.map((item, index) => (
             <button
               key={item.href}
+              onClick={() => navigate(item.href)}
               className={`w-full flex items-center gap-4 p-4 hover:bg-muted/50 transition-colors ${
                 index !== menuItems.length - 1 ? "border-b border-border" : ""
               }`}

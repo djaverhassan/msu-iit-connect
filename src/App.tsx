@@ -11,6 +11,10 @@ import Services from "./pages/Services";
 import News from "./pages/News";
 import Emergency from "./pages/Emergency";
 import Account from "./pages/Account";
+import AccountSettings from "./pages/account/Settings";
+import AccountNotifications from "./pages/account/Notifications";
+import AccountPrivacy from "./pages/account/Privacy";
+import AccountSupport from "./pages/account/Support";
 import Map from "./pages/Map";
 import EServices from "./pages/EServices";
 import EServiceRequest from "./pages/EServiceRequest";
@@ -67,6 +71,10 @@ const App = () => {
           <Route path="/map" element={<ProtectedRoute><Map /></ProtectedRoute>} />
           <Route path="/emergency" element={<ProtectedRoute><Emergency /></ProtectedRoute>} />
           <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+          <Route path="/account/settings" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
+          <Route path="/account/notifications" element={<ProtectedRoute><AccountNotifications /></ProtectedRoute>} />
+          <Route path="/account/privacy" element={<ProtectedRoute><AccountPrivacy /></ProtectedRoute>} />
+          <Route path="/account/support" element={<ProtectedRoute><AccountSupport /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
           <Route path="/admin/posts" element={<ProtectedRoute requireAdmin><AdminPosts /></ProtectedRoute>} />
           <Route path="/admin/issues" element={<ProtectedRoute requireAdmin><AdminIssues /></ProtectedRoute>} />
