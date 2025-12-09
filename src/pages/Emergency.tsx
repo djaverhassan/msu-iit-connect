@@ -101,7 +101,7 @@ const Emergency = () => {
               <p className="text-sm text-muted-foreground">View campus evacuation map</p>
             </div>
           </div>
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full" onClick={() => window.location.href = "/map"}>
             View Campus Map
           </Button>
         </div>
