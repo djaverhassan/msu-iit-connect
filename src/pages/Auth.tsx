@@ -175,7 +175,10 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/10 p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background via-background to-accent/10 p-4">
+      <div className="flex justify-center mb-6">
+        <img src={campusLogo} alt="MSU-IIT Logo" className="h-28 w-auto drop-shadow-lg" />
+      </div>
       <Card className="w-full max-w-md shadow-xl border-border/50 backdrop-blur-sm bg-card/95">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
@@ -194,9 +197,6 @@ export default function Auth() {
             
             <TabsContent value="login">
               <form onSubmit={handleLogin} className="space-y-4">
-                <div className="flex justify-center mb-4">
-                  <img src={campusLogo} alt="MSU-IIT Logo" className="h-24 w-auto" />
-                </div>
                 <div className="space-y-2">
                   <Label htmlFor="login-email">Email</Label>
                   <Input
