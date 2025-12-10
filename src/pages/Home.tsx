@@ -12,7 +12,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const { data: posts, isLoading } = usePosts({ recentDays: 3 });
+  const { data: posts, isLoading } = usePosts();
   const { isAdmin } = useAuth();
   const navigate = useNavigate();
   
