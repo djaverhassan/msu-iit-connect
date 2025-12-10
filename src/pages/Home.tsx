@@ -7,7 +7,7 @@ import { FeedPost } from "@/components/FeedPost";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
-import campusLogo from "@/assets/campus-logo.png";
+
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -53,10 +53,6 @@ const Home = () => {
       </header>
 
       <main className="max-w-md mx-auto px-4 py-6">
-        {/* Logo Section */}
-        <div className="flex justify-center mb-8">
-          <img src={campusLogo} alt="Campus Logo" className="h-40 w-auto" />
-        </div>
 
         {/* Admin Panel Button */}
         {isAdmin && (
