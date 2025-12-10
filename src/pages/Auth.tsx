@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
+import campusLogo from '@/assets/campus-logo.png';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -193,6 +194,9 @@ export default function Auth() {
             
             <TabsContent value="login">
               <form onSubmit={handleLogin} className="space-y-4">
+                <div className="flex justify-center mb-4">
+                  <img src={campusLogo} alt="MSU-IIT Logo" className="h-24 w-auto" />
+                </div>
                 <div className="space-y-2">
                   <Label htmlFor="login-email">Email</Label>
                   <Input
@@ -222,7 +226,7 @@ export default function Auth() {
             </TabsContent>
             
             <TabsContent value="signup">
-              <form onSubmit={handleSignup} className="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+              <form onSubmit={handleSignup} className="space-y-4 max-h-[60vh] overflow-y-auto scrollbar-hide">
                 <div className="space-y-2">
                   <Label htmlFor="signup-name">Full Name</Label>
                   <Input
