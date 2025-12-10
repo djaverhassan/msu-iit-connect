@@ -145,6 +145,7 @@ const Home = () => {
               posts.map((post) => (
                 <FeedPost
                   key={post.id}
+                  id={post.id}
                   author={post.author}
                   authorType={post.author_type}
                   avatar={undefined}
