@@ -6,6 +6,7 @@ import { ArrowLeft, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
+import sidlakLogo from "@/assets/publications/sidlak-logo.png";
 
 const Sidlak = () => {
   const { data: posts, isLoading } = usePosts("sidlak");
@@ -19,9 +20,12 @@ const Sidlak = () => {
         </Link>
 
         <div className="space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">SIDLAK</h1>
-            <p className="text-muted-foreground">College of Education</p>
+          <div className="flex items-center gap-4">
+            <img src={sidlakLogo} alt="Sidlak logo" className="w-16 h-16 rounded-lg object-cover" />
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold text-foreground">SIDLAK</h1>
+              <p className="text-muted-foreground">College of Education</p>
+            </div>
           </div>
           <a 
             href="https://www.facebook.com/OfficialMSUIITCEDstudentpublication" 

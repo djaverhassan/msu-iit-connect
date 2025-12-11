@@ -6,6 +6,7 @@ import { ArrowLeft, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
+import adinfinitumLogo from "@/assets/publications/adinfinitum-logo.png";
 
 const AdInfinitum = () => {
   const { data: posts, isLoading } = usePosts("adinfinitum");
@@ -19,9 +20,12 @@ const AdInfinitum = () => {
         </Link>
 
         <div className="space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">AD INFINITUM</h1>
-            <p className="text-muted-foreground">College of Science and Mathematics</p>
+          <div className="flex items-center gap-4">
+            <img src={adinfinitumLogo} alt="Ad Infinitum logo" className="w-16 h-16 rounded-lg object-cover" />
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold text-foreground">AD INFINITUM</h1>
+              <p className="text-muted-foreground">College of Science and Mathematics</p>
+            </div>
           </div>
           <a 
             href="https://www.facebook.com/CSMAdInfinitum" 

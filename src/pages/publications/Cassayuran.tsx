@@ -6,6 +6,7 @@ import { ArrowLeft, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
+import cassayuranLogo from "@/assets/publications/cassayuran-logo.png";
 
 const Cassayuran = () => {
   const { data: posts, isLoading } = usePosts("cassayuran");
@@ -19,9 +20,12 @@ const Cassayuran = () => {
         </Link>
 
         <div className="space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">CASSAYURAN</h1>
-            <p className="text-muted-foreground">College of Arts and Social Sciences</p>
+          <div className="flex items-center gap-4">
+            <img src={cassayuranLogo} alt="Cassayuran logo" className="w-16 h-16 rounded-lg object-cover" />
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold text-foreground">CASSAYURAN</h1>
+              <p className="text-muted-foreground">College of Arts and Social Sciences</p>
+            </div>
           </div>
           <a 
             href="https://www.facebook.com/cassayuran" 

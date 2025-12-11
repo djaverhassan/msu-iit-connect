@@ -1,7 +1,15 @@
 import { BottomNav } from "@/components/BottomNav";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Newspaper } from "lucide-react";
 import { Link } from "react-router-dom";
+
+import thuumLogo from "@/assets/publications/thuum-logo.png";
+import sidlakLogo from "@/assets/publications/sidlak-logo.png";
+import caduceusLogo from "@/assets/publications/caduceus-logo.png";
+import adinfinitumLogo from "@/assets/publications/adinfinitum-logo.png";
+import sindawLogo from "@/assets/publications/sindaw-logo.png";
+import motherboardLogo from "@/assets/publications/motherboard-logo.png";
+import cassayuranLogo from "@/assets/publications/cassayuran-logo.png";
+import silahisLogo from "@/assets/publications/silahis-logo.png";
 
 const publications = [
   {
@@ -10,6 +18,7 @@ const publications = [
     description: "Official Student Publication of MSU-IIT",
     college: "MSU-IIT",
     path: "/publications/silahis",
+    logo: silahisLogo,
   },
   {
     id: "sidlak",
@@ -17,6 +26,7 @@ const publications = [
     description: "The Official Student Publication",
     college: "College of Education",
     path: "/publications/sidlak",
+    logo: sidlakLogo,
   },
   {
     id: "cassayuran",
@@ -24,6 +34,7 @@ const publications = [
     description: "The Official Student Publication",
     college: "College of Arts and Social Sciences",
     path: "/publications/cassayuran",
+    logo: cassayuranLogo,
   },
   {
     id: "motherboard",
@@ -31,6 +42,7 @@ const publications = [
     description: "The Official Student Publication",
     college: "College of Computer Studies",
     path: "/publications/motherboard",
+    logo: motherboardLogo,
   },
   {
     id: "sindaw",
@@ -38,6 +50,7 @@ const publications = [
     description: "The Official Student Publication",
     college: "College of Economics, Business and Accountancy",
     path: "/publications/sindaw",
+    logo: sindawLogo,
   },
   {
     id: "adinfinitum",
@@ -45,6 +58,7 @@ const publications = [
     description: "The Official Student Publication",
     college: "College of Science and Mathematics",
     path: "/publications/adinfinitum",
+    logo: adinfinitumLogo,
   },
   {
     id: "caduceus",
@@ -52,6 +66,7 @@ const publications = [
     description: "The Official Student Publication",
     college: "College of Health Sciences",
     path: "/publications/caduceus",
+    logo: caduceusLogo,
   },
   {
     id: "thuum",
@@ -59,6 +74,7 @@ const publications = [
     description: "The Official Student Publication",
     college: "College of Engineering",
     path: "/publications/thuum",
+    logo: thuumLogo,
   },
 ];
 
@@ -79,8 +95,12 @@ const Publications = () => {
               <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
                 <CardHeader>
                   <div className="flex items-start gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Newspaper className="h-6 w-6 text-primary" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+                      <img 
+                        src={pub.logo} 
+                        alt={`${pub.name} logo`} 
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="flex-1">
                       <CardTitle className="text-xl">{pub.name}</CardTitle>

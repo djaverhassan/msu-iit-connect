@@ -6,6 +6,7 @@ import { ArrowLeft, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
+import thuumLogo from "@/assets/publications/thuum-logo.png";
 
 const Thuum = () => {
   const { data: posts, isLoading } = usePosts("thuum");
@@ -19,9 +20,12 @@ const Thuum = () => {
         </Link>
 
         <div className="space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">THE THU'UM</h1>
-            <p className="text-muted-foreground">College of Engineering</p>
+          <div className="flex items-center gap-4">
+            <img src={thuumLogo} alt="Thu'um logo" className="w-16 h-16 rounded-lg object-cover" />
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold text-foreground">THE THU'UM</h1>
+              <p className="text-muted-foreground">College of Engineering</p>
+            </div>
           </div>
           <a 
             href="https://www.facebook.com/thethuumpublication" 

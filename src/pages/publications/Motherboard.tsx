@@ -6,6 +6,7 @@ import { ArrowLeft, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
+import motherboardLogo from "@/assets/publications/motherboard-logo.png";
 
 const Motherboard = () => {
   const { data: posts, isLoading } = usePosts("motherboard");
@@ -19,9 +20,12 @@ const Motherboard = () => {
         </Link>
 
         <div className="space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">THE MOTHERBOARD</h1>
-            <p className="text-muted-foreground">College of Computer Studies</p>
+          <div className="flex items-center gap-4">
+            <img src={motherboardLogo} alt="Motherboard logo" className="w-16 h-16 rounded-lg object-cover" />
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold text-foreground">THE MOTHERBOARD</h1>
+              <p className="text-muted-foreground">College of Computer Studies</p>
+            </div>
           </div>
           <a 
             href="https://www.facebook.com/ccsmotherboard" 

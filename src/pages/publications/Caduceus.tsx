@@ -6,6 +6,7 @@ import { ArrowLeft, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
+import caduceusLogo from "@/assets/publications/caduceus-logo.png";
 
 const Caduceus = () => {
   const { data: posts, isLoading } = usePosts("caduceus");
@@ -19,9 +20,12 @@ const Caduceus = () => {
         </Link>
 
         <div className="space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground">THE CADUCEUS</h1>
-            <p className="text-muted-foreground">College of Health Sciences</p>
+          <div className="flex items-center gap-4">
+            <img src={caduceusLogo} alt="Caduceus logo" className="w-16 h-16 rounded-lg object-cover" />
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold text-foreground">THE CADUCEUS</h1>
+              <p className="text-muted-foreground">College of Health Sciences</p>
+            </div>
           </div>
           <a 
             href="https://www.facebook.com/profile.php?id=61564064011460" 
