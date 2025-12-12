@@ -176,15 +176,6 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-gradient-to-b from-primary/5 via-background to-primary/10">
-      {/* Logo above card */}
-      <div className="flex justify-center mb-6">
-        <img 
-          src={campusLogo} 
-          alt="MSU-IIT Logo" 
-          className="h-20 w-20 object-contain" 
-        />
-      </div>
-      
       <Card className="w-full max-w-md shadow-2xl border-0 bg-card/95 backdrop-blur-sm">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
