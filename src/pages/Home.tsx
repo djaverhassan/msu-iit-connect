@@ -1,4 +1,4 @@
-import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus, ChevronDown, Shield } from "lucide-react";
+import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus, ChevronDown, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -7,14 +7,16 @@ import { FeedPost } from "@/components/FeedPost";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { usePosts } from "@/hooks/usePosts";
 import { format } from "date-fns";
+import { useState, useMemo } from "react";
 
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { data: posts, isLoading } = usePosts();
-  const { isAdmin } = useAuth();
+  const { isAdmin, isStudentCouncil } = useAuth();
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
   
   const services = [
     { icon: Globe, label: "e-Services", href: "/e-services" },
@@ -22,6 +24,26 @@ const Home = () => {
     { icon: GraduationCap, label: "Core Values", href: "/core-values" },
     { icon: FileText, label: "Campus Updates", href: "/news" },
   ];
+
+  // Filter posts based on search query
+  const filteredPosts = useMemo(() => {
+    if (!posts || !searchQuery.trim()) return posts;
+    const query = searchQuery.toLowerCase();
+    return posts.filter(post => 
+      post.title?.toLowerCase().includes(query) ||
+      post.content?.toLowerCase().includes(query) ||
+      post.author?.toLowerCase().includes(query)
+    );
+  }, [posts, searchQuery]);
+
+  // Filter services based on search query
+  const filteredServices = useMemo(() => {
+    if (!searchQuery.trim()) return services;
+    const query = searchQuery.toLowerCase();
+    return services.filter(service => 
+      service.label.toLowerCase().includes(query)
+    );
+  }, [searchQuery]);
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -46,7 +68,9 @@ const Home = () => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               placeholder="Search services, updates..."
-              className="pl-10 bg-card border-0 h-12 rounded-xl"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 bg-card border-0 h-12 rounded-xl text-foreground placeholder:text-muted-foreground"
             />
           </div>
         </div>
@@ -56,7 +80,7 @@ const Home = () => {
 
         {/* Admin Panel Button */}
         {isAdmin && (
-          <section className="mb-6">
+          <section className="mb-4">
             <Button
               onClick={() => navigate("/admin")}
               className="w-full bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-accent-foreground h-14 rounded-xl"
@@ -68,14 +92,32 @@ const Home = () => {
           </section>
         )}
 
+        {/* Student Council Panel Button */}
+        {isStudentCouncil && (
+          <section className="mb-6">
+            <Button
+              onClick={() => navigate("/council")}
+              className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground h-14 rounded-xl"
+              style={{ boxShadow: "var(--shadow-elevated)" }}
+            >
+              <Users className="h-5 w-5 mr-2" />
+              Student Council Panel
+            </Button>
+          </section>
+        )}
+
         {/* Quick Actions */}
         <section className="mb-8">
           <h2 className="text-xl font-semibold text-foreground mb-4">What would you like to do?</h2>
-          <div className="grid grid-cols-2 gap-4">
-            {services.map((service) => (
-              <ServiceCard key={service.href} {...service} />
-            ))}
-          </div>
+          {filteredServices.length > 0 ? (
+            <div className="grid grid-cols-2 gap-4">
+              {filteredServices.map((service) => (
+                <ServiceCard key={service.href} {...service} />
+              ))}
+            </div>
+          ) : searchQuery && (
+            <p className="text-center text-muted-foreground py-4">No services match "{searchQuery}"</p>
+          )}
         </section>
 
         {/* SDG Focus Banner */}
@@ -141,8 +183,8 @@ const Home = () => {
           <div className="space-y-4">
             {isLoading ? (
               <p className="text-center text-muted-foreground">Loading posts...</p>
-            ) : posts && posts.length > 0 ? (
-              posts.map((post) => (
+            ) : filteredPosts && filteredPosts.length > 0 ? (
+              filteredPosts.map((post) => (
                 <FeedPost
                   key={post.id}
                   id={post.id}
@@ -158,6 +200,8 @@ const Home = () => {
                   publicationId={post.publication_id}
                 />
               ))
+            ) : searchQuery ? (
+              <p className="text-center text-muted-foreground">No posts match "{searchQuery}"</p>
             ) : (
               <p className="text-center text-muted-foreground">No posts yet. Check back later!</p>
             )}
