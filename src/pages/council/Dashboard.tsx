@@ -22,13 +22,62 @@ const CouncilDashboard = () => {
     fetchProfile();
   }, [user]);
 
-  const councilLinks = [
-    { 
-      label: "CCS Council Tracking System", 
-      url: "https://ccs-cts.netlify.app/login", 
-      description: "Access the council tracking and management system" 
-    },
-  ];
+  // College-specific council resources
+  const councilResourcesByCollege: Record<string, Array<{ label: string; url: string; description: string }>> = {
+    college_of_computer_studies: [
+      { 
+        label: "CCS Council Tracking System", 
+        url: "https://ccs-cts.netlify.app/login", 
+        description: "Access the CCS council tracking and management system" 
+      },
+    ],
+    college_of_engineering_and_technology: [
+      { 
+        label: "CET Council Portal", 
+        url: "#", 
+        description: "College of Engineering and Technology council resources" 
+      },
+    ],
+    college_of_science_and_mathematics: [
+      { 
+        label: "CSM Council Portal", 
+        url: "#", 
+        description: "College of Science and Mathematics council resources" 
+      },
+    ],
+    college_of_education: [
+      { 
+        label: "CED Council Portal", 
+        url: "#", 
+        description: "College of Education council resources" 
+      },
+    ],
+    college_of_arts_and_science: [
+      { 
+        label: "CAS Council Portal", 
+        url: "#", 
+        description: "College of Arts and Science council resources" 
+      },
+    ],
+    college_of_business_administration_and_accountancy: [
+      { 
+        label: "CBAA Council Portal", 
+        url: "#", 
+        description: "College of Business Administration and Accountancy council resources" 
+      },
+    ],
+    college_of_nursing: [
+      { 
+        label: "CON Council Portal", 
+        url: "#", 
+        description: "College of Nursing council resources" 
+      },
+    ],
+  };
+
+  const councilLinks = profile?.college 
+    ? councilResourcesByCollege[profile.college] || []
+    : [];
 
   return (
     <div className="min-h-screen bg-background">
