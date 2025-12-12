@@ -95,7 +95,7 @@ const Home = () => {
             {isStudentCouncil && (
               <Button
                 onClick={() => navigate("/council")}
-                className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground h-14 rounded-xl font-semibold"
+                className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground h-14 rounded-xl font-semibold border-2 border-primary-foreground/20"
                 style={{ boxShadow: "var(--shadow-elevated)" }}
               >
                 <Users className="h-5 w-5 mr-2" />
