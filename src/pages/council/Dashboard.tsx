@@ -24,24 +24,9 @@ const CouncilDashboard = () => {
 
   const councilLinks = [
     { 
-      label: "USC Official Portal", 
-      url: "https://usc.msuiit.edu.ph", 
-      description: "University Student Council official website" 
-    },
-    { 
-      label: "Council Documents", 
-      url: "https://drive.google.com", 
-      description: "Access shared council documents and files" 
-    },
-    { 
-      label: "Meeting Schedules", 
-      url: "https://calendar.google.com", 
-      description: "View upcoming council meetings and events" 
-    },
-    { 
-      label: "Council Communications", 
-      url: "https://mail.google.com", 
-      description: "Official council email and communications" 
+      label: "CCS Council Tracking System", 
+      url: "https://ccs-cts.netlify.app/login", 
+      description: "Access the council tracking and management system" 
     },
   ];
 
