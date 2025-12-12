@@ -8,6 +8,8 @@ interface AuthContextType {
   session: Session | null;
   isAdmin: boolean;
   isStudentCouncil: boolean;
+  isFaculty: boolean;
+  isVerified: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
   signUp: (
@@ -29,6 +31,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isStudentCouncil, setIsStudentCouncil] = useState(false);
+  const [isFaculty, setIsFaculty] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -43,11 +47,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         if (session?.user) {
           setTimeout(() => {
             checkAdminRole(session.user.id);
-            checkStudentCouncilRole(session.user.id);
+            checkUserProfile(session.user.id);
           }, 0);
         } else {
           setIsAdmin(false);
           setIsStudentCouncil(false);
+          setIsFaculty(false);
+          setIsVerified(false);
         }
       }
     );
@@ -60,7 +66,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (session?.user) {
         setTimeout(() => {
           checkAdminRole(session.user.id);
-          checkStudentCouncilRole(session.user.id);
+          checkUserProfile(session.user.id);
         }, 0);
       }
       setLoading(false);
@@ -89,22 +95,28 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const checkStudentCouncilRole = async (userId: string) => {
+  const checkUserProfile = async (userId: string) => {
     try {
       const { data, error } = await supabase
         .from('profiles')
-        .select('user_type')
+        .select('user_type, is_verified')
         .eq('user_id', userId)
         .maybeSingle();
       
-      if (!error && data && data.user_type === 'student_council') {
-        setIsStudentCouncil(true);
+      if (!error && data) {
+        setIsStudentCouncil(data.user_type === 'student_council');
+        setIsFaculty(data.user_type === 'faculty');
+        setIsVerified(data.is_verified ?? false);
       } else {
         setIsStudentCouncil(false);
+        setIsFaculty(false);
+        setIsVerified(false);
       }
     } catch (error) {
-      console.error('Error checking student council role:', error);
+      console.error('Error checking user profile:', error);
       setIsStudentCouncil(false);
+      setIsFaculty(false);
+      setIsVerified(false);
     }
   };
 
@@ -158,11 +170,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await supabase.auth.signOut();
     setIsAdmin(false);
     setIsStudentCouncil(false);
+    setIsFaculty(false);
+    setIsVerified(false);
     navigate('/auth');
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, isAdmin, isStudentCouncil, loading, signIn, signUp, signOut }}>
+    <AuthContext.Provider value={{ user, session, isAdmin, isStudentCouncil, isFaculty, isVerified, loading, signIn, signUp, signOut }}>
       {children}
     </AuthContext.Provider>
   );

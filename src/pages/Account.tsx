@@ -18,7 +18,7 @@ interface Profile {
 }
 
 const Account = () => {
-  const { user, signOut, isAdmin, isStudentCouncil } = useAuth();
+  const { user, signOut, isAdmin, isStudentCouncil, isFaculty } = useAuth();
   const navigate = useNavigate();
   const [profile, setProfile] = useState<Profile | null>(null);
 
@@ -74,6 +74,12 @@ const Account = () => {
       label: "Council Dashboard",
       description: "Manage student council activities",
       href: "/council",
+    }] : []),
+    ...(isFaculty ? [{
+      icon: Briefcase,
+      label: "Faculty Dashboard",
+      description: "Access faculty resources and tools",
+      href: "/faculty",
     }] : []),
     {
       icon: Settings,

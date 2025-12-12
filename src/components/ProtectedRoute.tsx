@@ -5,10 +5,18 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
   requireAdmin?: boolean;
   requireStudentCouncil?: boolean;
+  requireFaculty?: boolean;
+  requireVerified?: boolean;
 }
 
-export const ProtectedRoute = ({ children, requireAdmin = false, requireStudentCouncil = false }: ProtectedRouteProps) => {
-  const { user, isAdmin, isStudentCouncil, loading } = useAuth();
+export const ProtectedRoute = ({ 
+  children, 
+  requireAdmin = false, 
+  requireStudentCouncil = false,
+  requireFaculty = false,
+  requireVerified = false,
+}: ProtectedRouteProps) => {
+  const { user, isAdmin, isStudentCouncil, isFaculty, isVerified, loading } = useAuth();
 
   if (loading) {
     return (
@@ -27,6 +35,14 @@ export const ProtectedRoute = ({ children, requireAdmin = false, requireStudentC
   }
 
   if (requireStudentCouncil && !isStudentCouncil && !isAdmin) {
+    return <Navigate to="/home" replace />;
+  }
+
+  if (requireFaculty && !isFaculty && !isAdmin) {
+    return <Navigate to="/home" replace />;
+  }
+
+  if (requireVerified && !isVerified && !isAdmin) {
     return <Navigate to="/home" replace />;
   }
 

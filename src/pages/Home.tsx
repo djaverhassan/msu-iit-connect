@@ -1,4 +1,4 @@
-import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus, ChevronDown, Shield, Users } from "lucide-react";
+import { Search, Globe, AlertCircle, GraduationCap, FileText, Plus, ChevronDown, Shield, Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { data: posts, isLoading } = usePosts();
-  const { isAdmin, isStudentCouncil } = useAuth();
+  const { isAdmin, isStudentCouncil, isFaculty } = useAuth();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   
@@ -94,7 +94,7 @@ const Home = () => {
 
         {/* Student Council Panel Button */}
         {isStudentCouncil && (
-          <section className="mb-6">
+          <section className="mb-4">
             <Button
               onClick={() => navigate("/council")}
               className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground h-14 rounded-xl"
@@ -102,6 +102,20 @@ const Home = () => {
             >
               <Users className="h-5 w-5 mr-2" />
               Student Council Panel
+            </Button>
+          </section>
+        )}
+
+        {/* Faculty Panel Button */}
+        {isFaculty && (
+          <section className="mb-6">
+            <Button
+              onClick={() => navigate("/faculty")}
+              className="w-full bg-gradient-to-r from-primary/80 to-primary/60 hover:from-primary/70 hover:to-primary/50 text-primary-foreground h-14 rounded-xl"
+              style={{ boxShadow: "var(--shadow-elevated)" }}
+            >
+              <Briefcase className="h-5 w-5 mr-2" />
+              Faculty Panel
             </Button>
           </section>
         )}

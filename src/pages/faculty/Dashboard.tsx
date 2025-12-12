@@ -1,11 +1,11 @@
-import { ArrowLeft, Users, ExternalLink, Link2, ShieldAlert } from "lucide-react";
+import { ArrowLeft, Briefcase, ExternalLink, Link2, ShieldAlert } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
-const CouncilDashboard = () => {
+const FacultyDashboard = () => {
   const { user, isVerified } = useAuth();
   const [profile, setProfile] = useState<{ college: string | null } | null>(null);
 
@@ -22,61 +22,61 @@ const CouncilDashboard = () => {
     fetchProfile();
   }, [user]);
 
-  // College-specific council resources
-  const councilResourcesByCollege: Record<string, Array<{ label: string; url: string; description: string }>> = {
+  // College-specific faculty resources
+  const facultyResourcesByCollege: Record<string, Array<{ label: string; url: string; description: string }>> = {
     college_of_computer_studies: [
       { 
-        label: "CCS Council Tracking System", 
-        url: "https://ccs-cts.netlify.app/login", 
-        description: "Access the CCS council tracking and management system" 
+        label: "CCS Faculty Portal", 
+        url: "#", 
+        description: "Access the CCS faculty resources and management system" 
       },
     ],
     college_of_engineering_and_technology: [
       { 
-        label: "CET Council Portal", 
+        label: "CET Faculty Portal", 
         url: "#", 
-        description: "College of Engineering and Technology council resources" 
+        description: "College of Engineering and Technology faculty resources" 
       },
     ],
     college_of_science_and_mathematics: [
       { 
-        label: "CSM Council Portal", 
+        label: "CSM Faculty Portal", 
         url: "#", 
-        description: "College of Science and Mathematics council resources" 
+        description: "College of Science and Mathematics faculty resources" 
       },
     ],
     college_of_education: [
       { 
-        label: "CED Council Portal", 
+        label: "CED Faculty Portal", 
         url: "#", 
-        description: "College of Education council resources" 
+        description: "College of Education faculty resources" 
       },
     ],
     college_of_arts_and_science: [
       { 
-        label: "CAS Council Portal", 
+        label: "CAS Faculty Portal", 
         url: "#", 
-        description: "College of Arts and Science council resources" 
+        description: "College of Arts and Science faculty resources" 
       },
     ],
     college_of_business_administration_and_accountancy: [
       { 
-        label: "CBAA Council Portal", 
+        label: "CBAA Faculty Portal", 
         url: "#", 
-        description: "College of Business Administration and Accountancy council resources" 
+        description: "College of Business Administration and Accountancy faculty resources" 
       },
     ],
     college_of_nursing: [
       { 
-        label: "CON Council Portal", 
+        label: "CON Faculty Portal", 
         url: "#", 
-        description: "College of Nursing council resources" 
+        description: "College of Nursing faculty resources" 
       },
     ],
   };
 
-  const councilLinks = profile?.college 
-    ? councilResourcesByCollege[profile.college] || []
+  const facultyLinks = profile?.college 
+    ? facultyResourcesByCollege[profile.college] || []
     : [];
 
   const getCollegeDisplayName = (college: string | null) => {
@@ -95,7 +95,7 @@ const CouncilDashboard = () => {
                 <ArrowLeft className="h-5 w-5" />
               </Link>
               <div>
-                <h1 className="text-2xl font-bold">Student Council Dashboard</h1>
+                <h1 className="text-2xl font-bold">Faculty Dashboard</h1>
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@ const CouncilDashboard = () => {
               <ShieldAlert className="h-12 w-12 text-destructive mx-auto mb-3" />
               <h3 className="font-semibold text-foreground mb-2">Verification Required</h3>
               <p className="text-sm text-muted-foreground">
-                Your account must be verified by an administrator before you can access student council resources. Please wait for verification or contact the administration.
+                Your account must be verified by an administrator before you can access faculty resources. Please wait for verification or contact the administration.
               </p>
             </CardContent>
           </Card>
@@ -125,7 +125,7 @@ const CouncilDashboard = () => {
               <ArrowLeft className="h-5 w-5" />
             </Link>
             <div>
-              <h1 className="text-2xl font-bold">Student Council Dashboard</h1>
+              <h1 className="text-2xl font-bold">Faculty Dashboard</h1>
               {profile?.college && (
                 <p className="text-primary-foreground/80 text-sm">{getCollegeDisplayName(profile.college)}</p>
               )}
@@ -135,17 +135,17 @@ const CouncilDashboard = () => {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-6 space-y-6">
-        {/* Council Links */}
+        {/* Faculty Links */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5 text-primary" />
-              Council Resources
+              Faculty Resources
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {councilLinks.length > 0 ? (
-              councilLinks.map((link) => (
+            {facultyLinks.length > 0 ? (
+              facultyLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.url}
@@ -171,10 +171,10 @@ const CouncilDashboard = () => {
         {/* Coming Soon Notice */}
         <Card className="border-dashed">
           <CardContent className="p-6 text-center">
-            <Users className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+            <Briefcase className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
             <h3 className="font-semibold text-foreground mb-2">More Features Coming Soon</h3>
             <p className="text-sm text-muted-foreground">
-              Additional student council features including polls, surveys, and college-specific announcements are in development.
+              Additional faculty features including grade management, class schedules, and college-specific announcements are in development.
             </p>
           </CardContent>
         </Card>
@@ -183,4 +183,4 @@ const CouncilDashboard = () => {
   );
 };
 
-export default CouncilDashboard;
+export default FacultyDashboard;
