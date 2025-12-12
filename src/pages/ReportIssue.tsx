@@ -8,8 +8,10 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ReportIssue = () => {
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,7 +32,7 @@ const ReportIssue = () => {
     setIsSubmitting(true);
 
     try {
-      // Insert issue into database
+      // Insert issue into database with user_id for tracking
       const { error: insertError } = await supabase
         .from('issues')
         .insert({
@@ -39,6 +41,7 @@ const ReportIssue = () => {
           student_id: formData.studentId || null,
           category: formData.category || null,
           message: formData.message,
+          user_id: user?.id || null,
         });
 
       if (insertError) {

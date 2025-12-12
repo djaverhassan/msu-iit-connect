@@ -1,4 +1,4 @@
-import { User, Settings, Bell, Shield, HelpCircle, LogOut, ChevronRight, Users, Building2, GraduationCap, Briefcase } from "lucide-react";
+import { User, Settings, Bell, Shield, HelpCircle, LogOut, ChevronRight, Users, Building2, GraduationCap, Briefcase, FileText } from "lucide-react";
 import { BottomNav } from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -81,6 +81,12 @@ const Account = () => {
       description: "Access faculty resources and tools",
       href: "/faculty",
     }] : []),
+    {
+      icon: FileText,
+      label: "My Requests",
+      description: "Track your service requests and issues",
+      href: "/account/requests",
+    },
     {
       icon: Settings,
       label: "Settings",
