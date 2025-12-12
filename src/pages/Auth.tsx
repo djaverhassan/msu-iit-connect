@@ -175,21 +175,23 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background via-background to-accent/10 p-4 pt-24">
-      <div className="relative w-full max-w-md">
-        {/* Floating Logo */}
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 z-10">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-110" />
-            <img 
-              src={campusLogo} 
-              alt="MSU-IIT Logo" 
-              className="relative h-32 w-32 object-contain drop-shadow-2xl" 
-            />
-          </div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      {/* Background gradient - maroon/gold themed */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-accent/20" />
+      <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-br from-primary/10 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-accent/30 via-accent/10 to-transparent" />
+      
+      <div className="relative z-10 w-full max-w-md">
+        {/* Logo above card */}
+        <div className="flex justify-center mb-6">
+          <img 
+            src={campusLogo} 
+            alt="MSU-IIT Logo" 
+            className="h-20 w-20 object-contain" 
+          />
         </div>
         
-        <Card className="w-full shadow-xl border-border/50 backdrop-blur-sm bg-card/95 pt-16">
+        <Card className="w-full shadow-2xl border-0 bg-card/95 backdrop-blur-sm">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             MSU-IIT CampusLink
