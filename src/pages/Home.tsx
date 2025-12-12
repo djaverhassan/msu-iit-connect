@@ -13,7 +13,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const { data: posts, isLoading } = usePosts();
+  // Fetch posts from last 30 days with real-time updates
+  const { data: posts, isLoading } = usePosts({ recentDays: 30 });
   const { isAdmin, isStudentCouncil, isFaculty } = useAuth();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");

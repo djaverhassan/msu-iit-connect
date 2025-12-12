@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import adinfinitumLogo from "@/assets/publications/adinfinitum-logo.png";
 
 const AdInfinitum = () => {
-  const { data: posts, isLoading } = usePosts("adinfinitum");
+  const { data: posts, isLoading } = usePosts({ publicationId: "adinfinitum", recentDays: 30 });
 
   return (
     <div className="min-h-screen bg-background pb-20">

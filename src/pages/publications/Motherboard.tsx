@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import motherboardLogo from "@/assets/publications/motherboard-logo.png";
 
 const Motherboard = () => {
-  const { data: posts, isLoading } = usePosts("motherboard");
+  const { data: posts, isLoading } = usePosts({ publicationId: "motherboard", recentDays: 30 });
 
   return (
     <div className="min-h-screen bg-background pb-20">

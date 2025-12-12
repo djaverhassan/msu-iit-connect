@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import caduceusLogo from "@/assets/publications/caduceus-logo.png";
 
 const Caduceus = () => {
-  const { data: posts, isLoading } = usePosts("caduceus");
+  const { data: posts, isLoading } = usePosts({ publicationId: "caduceus", recentDays: 30 });
 
   return (
     <div className="min-h-screen bg-background pb-20">

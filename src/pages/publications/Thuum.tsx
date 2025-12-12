@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import thuumLogo from "@/assets/publications/thuum-logo.png";
 
 const Thuum = () => {
-  const { data: posts, isLoading } = usePosts("thuum");
+  const { data: posts, isLoading } = usePosts({ publicationId: "thuum", recentDays: 30 });
 
   return (
     <div className="min-h-screen bg-background pb-20">

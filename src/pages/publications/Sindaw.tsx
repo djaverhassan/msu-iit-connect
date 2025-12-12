@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import sindawLogo from "@/assets/publications/sindaw-logo.png";
 
 const Sindaw = () => {
-  const { data: posts, isLoading } = usePosts("sindaw");
+  const { data: posts, isLoading } = usePosts({ publicationId: "sindaw", recentDays: 30 });
 
   return (
     <div className="min-h-screen bg-background pb-20">

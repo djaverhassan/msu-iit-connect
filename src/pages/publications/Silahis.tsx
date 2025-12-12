@@ -9,7 +9,8 @@ import { format } from "date-fns";
 import silahisLogo from "@/assets/publications/silahis-logo.png";
 
 const Silahis = () => {
-  const { data: posts, isLoading } = usePosts("silahis");
+  // Fetch silahis posts from last 30 days with real-time updates
+  const { data: posts, isLoading } = usePosts({ publicationId: "silahis", recentDays: 30 });
 
   return (
     <div className="min-h-screen bg-background pb-20">
