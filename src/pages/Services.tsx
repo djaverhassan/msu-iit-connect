@@ -6,14 +6,12 @@ const Services = () => {
   const eServices = [
     { icon: Globe, label: "e-Services Portal", href: "/e-services" },
     { icon: GraduationCap, label: "Core Values", href: "/core-values" },
-    { icon: Calendar, label: "Publications", href: "/publications" },
     { icon: BookOpen, label: "News & Updates", href: "/news" },
   ];
 
   const campusServices = [
     { icon: MapPin, label: "Campus Map", href: "/map" },
     { icon: Wrench, label: "Report Issue", href: "/report-issue" },
-    { icon: Users, label: "Publications", href: "/publications" },
     { icon: Phone, label: "Emergency", href: "/emergency" },
   ];
 

@@ -57,7 +57,7 @@ const EServices = () => {
       <main className="max-w-md mx-auto px-4 py-6">
         {/* MYIIT Portal Link */}
         <a 
-          href="https://myiitportal.msuiit.edu.ph/" 
+          href="https://accounts.msuiit.edu.ph/signin/module.php/core/loginuserpass?AuthState=_1c4294ece9a1c927ad856bdb0f48af7c0ac72256d2%3Ahttps%3A%2F%2Faccounts.msuiit.edu.ph%2Fsignin%2Fmodule.php%2Fsaml%2Fidp%2FsingleSignOnService%3Fspentityid%3Durn%253Amyiit%26RelayState%3Dhttps%253A%252F%252Fmyiit.msuiit.edu.ph%252Fmy%252Fv2%252Findex.php%26cookieTime%3D1765501948" 
           target="_blank" 
           rel="noopener noreferrer"
           className="block mb-6"
