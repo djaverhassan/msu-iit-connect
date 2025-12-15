@@ -208,7 +208,7 @@ const Home = () => {
             <Button
               variant="secondary"
               className="flex-1 bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground border-0"
-              onClick={() => navigate("/account/my-requests")}
+              onClick={() => navigate("/account/requests")}
             >
               View Reports
             </Button>
