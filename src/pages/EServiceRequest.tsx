@@ -238,7 +238,24 @@ const EServiceRequest = () => {
 
       if (error) throw error;
 
-      toast.success("Service request submitted successfully!");
+      // Send automated email for ID requests
+      if (currentService.value === "request_id") {
+        try {
+          await supabase.functions.invoke("send-id-request-email", {
+            body: {
+              name: formData.name?.trim(),
+              email: formData.email?.trim(),
+              studentId: formData.studentId?.trim(),
+              idType: formData.idType,
+            },
+          });
+        } catch (emailError) {
+          console.error("Failed to send confirmation email:", emailError);
+          // Don't fail the request if email fails
+        }
+      }
+
+      toast.success("Service request submitted successfully! Check your email for next steps.");
       setFormData({ email: user?.email || "" });
       navigate("/e-services");
     } catch (error: any) {
