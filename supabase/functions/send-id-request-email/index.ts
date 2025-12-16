@@ -144,7 +144,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "MSU-IIT CampusLink <onboarding@resend.dev>",
+        from: "MSU-IIT CampusLink <noreply@updates.g.msuiit.edu.ph>",
         to: [email],
         subject: isReplacement 
           ? "Student ID Replacement - Required Documents" 
