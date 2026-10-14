@@ -4,6 +4,10 @@ MSU-IIT CampusLink is a campus portal for the Mindanao State University - Iligan
 
 The repository is named **msu-iit-connect**, while the application uses **MSU-IIT CampusLink** as its display name. It was created with [Lovable](https://lovable.dev/projects/93ac4a50-abde-4a29-9080-f11c7e0d2967).
 
+## Academic project and recognition
+
+This website was developed as an academic project for **CCC181 - Application Development and Emerging Technologies**. It received **2nd Runner-Up for Most Innovative**.
+
 ## Features
 
 - **Campus feed:** Browse posts and announcements, with support for likes and comments.
